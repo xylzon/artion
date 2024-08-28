@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <button id="newButton" class="tool-button" title="New"><i class="fas fa-file"></i></button>
+        <button id="openButton" class="tool-button" title="Open"><i class="fas fa-folder-open"></i></button>
+        <button id="saveButton" class="tool-button" title="Save"><i class="fas fa-save"></i></button>
+        <button id="undoButton" class="tool-button" title="Undo"><i class="fas fa-undo"></i></button>
+        <button id="redoButton" class="tool-button" title="Redo"><i class="fas fa-redo"></i></button>
+        <button id="eraserButton" class="tool-button" title="Eraser"><i class="fas fa-eraser"></i></button>
+        <button id="clearButton" class="tool-button" title="Clear"><i class="fas fa-trash"></i></button>
+        <button id="resizeButton" class="tool-button" title="Resize Canvas"><i class="fas fa-expand-alt"></i></button>
+    </div>
+
+    <!-- Canvas Container -->
+    <div class="canvas-container">
+        <canvas id="paintCanvas"></canvas>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <div class="color-controls">
+            <label for="colorPicker">Color:</label>
+            <input type="color" id="colorPicker" value="#000000">
+            <div id="colorPalette" class="color-palette"></div>
+        </div>
+        <div class="brush-controls">
+            <label for="brushSize">Brush Size:</label>
+            <input type="range" id="brushSize" min="1" max="20" value="5">
+        </div>
+        <div class="shape-controls">
+            <label for="brushShape">Brush Shape:</label>
+            <select id="brushShape">
+                <option value="round">Round</option>
+                <option value="square">Square</option>
+            </select>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
