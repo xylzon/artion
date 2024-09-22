@@ -40,17 +40,35 @@ document.addEventListener("DOMContentLoaded", () => {
         const x = e.clientX || e.touches[0].clientX;
         const y = e.clientY || e.touches[0].clientY;
 
-        context.lineWidth = document.getElementById("brushSize").value;
+        const brushSize = document.getElementById("brushSize").value;
+        const color = document.getElementById("colorPicker").value;
+        const brushShape = document.getElementById("brushShape").value;
+        const brushStyle = document.getElementById("brushStyle").value; // Get brush style
+
+        context.lineWidth = brushSize;
+        context.lineCap = brushShape;
 
         if (eraserMode) {
-            context.strokeStyle = "#ffffff"; // Use white for erasing
+            context.strokeStyle = "#ffffff"; // Erasing with white
+        } else if (brushStyle === "gradient") {
+            // Create a gradient brush
+            const gradient = context.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, "#FF0000"); // Red
+            gradient.addColorStop(0.5, "#00FF00"); // Green
+            gradient.addColorStop(1, "#0000FF"); // Blue
+            context.strokeStyle = gradient;
         } else {
-            context.strokeStyle = document.getElementById("colorPicker").value;
+            context.strokeStyle = color;
         }
 
-        const brushShape = document.getElementById("brushShape").value;
-
-        context.lineCap = brushShape;
+        // Set dashed or dotted line styles
+        if (brushStyle === "dotted") {
+            context.setLineDash([brushSize * 2, brushSize * 2]); // Adjust for dots
+        } else if (brushStyle === "dashed") {
+            context.setLineDash([brushSize * 4, brushSize]); // Adjust for dashes
+        } else {
+            context.setLineDash([]); // Reset to solid line
+        }
 
         context.lineTo(x - canvas.offsetLeft, y - canvas.offsetTop);
         context.stroke();
