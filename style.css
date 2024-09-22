@@ -74,7 +74,7 @@ canvas:hover {
     border-top: 2px solid #333;
 }
 
-.color-controls, .brush-controls, .shape-controls {
+.color-controls, .brush-controls, .shape-controls, .brush-options {
     display: flex;
     align-items: center;
     gap: 10px;
